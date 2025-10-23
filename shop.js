@@ -1,0 +1,1 @@
+// Shop JS placeholder
