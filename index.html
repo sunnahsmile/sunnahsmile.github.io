@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SunnahSmile — Home</title>
+<link rel="stylesheet" href="assets/style.css" />
+<meta name="description" content="SunnahSmile — Natural miswaak and oral-care products." />
+</head>
+<body>
+<header class="nav">
+  <div class="brand">Sunnah<span class="accent">Smile</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a class="cart-link" href="#" onclick="openCart()">Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Welcome to SunnahSmile</h1>
+    <p class="lead">Reviving the Sunnah of oral care with natural miswaak — sustainable, simple, and pure.</p>
+  </section>
+
+  <section class="featured">
+    <div class="product-card">
+      <img src="assets/images/miswaak.jpg" alt="Miswaak" />
+      <div class="product-info">
+        <h2>Miswaak</h2>
+        <div class="desc">A natural toothbrush made from the Salvadora persica tree — used for centuries for oral hygiene in accordance with the Sunnah.</div>
+        <div class="price">£2.50</div>
+        <div class="actions">
+          <button onclick="addToCart('p1')">Add to Cart</button>
+          <button id="buy-now" onclick="scrollToCart()">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Cart Panel -->
+<aside class="cart-panel" id="cartPanel" aria-live="polite">
+  <h4>Your Cart</h4>
+  <div id="cartItems"></div>
+  <div class="total-row">
+    <div class="muted">Total</div>
+    <div id="cartTotal">£0.00</div>
+  </div>
+  <div id="paypal-button-container"></div>
+  <button class="close-cart" onclick="closeCart()">Close</button>
+</aside>
+
+<footer>© 2025 SunnahSmile — Natural miswaak · GBP (sandbox)</footer>
+
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
+<script src="assets/shop.js"></script>
+</body>
+</html>

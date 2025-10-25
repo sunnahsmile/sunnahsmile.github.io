@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About SunnahSmile</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="brand">Sunnah<span class="accent">Smile</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a class="cart-link" href="#" onclick="openCart()">Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>About SunnahSmile</h1>
+  <p class="lead">At SunnahSmile, we believe in reviving the beautiful Sunnah of oral care through the use of authentic miswaak. Our mission is to provide high-quality natural products that promote hygiene, sustainability, and spiritual wellness. Inspired by tradition, designed for today.</p>
+  <h2>Our Values</h2>
+  <ul>
+    <li>Authenticity — sourced from trusted growers</li>
+    <li>Natural — chemical-free and biodegradable</li>
+    <li>Sustainable — ethically harvested and packaged</li>
+  </ul>
+  <h3>Contact</h3>
+  <p>You can contact us at <a href="mailto:hello@sunnahsmile.example">hello@sunnahsmile.example</a>.</p>
+</main>
+
+<aside class="cart-panel" id="cartPanel" aria-live="polite">
+  <h4>Your Cart</h4>
+  <div id="cartItems"></div>
+  <div class="total-row">
+    <div class="muted">Total</div>
+    <div id="cartTotal">£0.00</div>
+  </div>
+  <div id="paypal-button-container"></div>
+  <button class="close-cart" onclick="closeCart()">Close</button>
+</aside>
+
+<footer>© 2025 SunnahSmile — Natural miswaak · GBP (sandbox)</footer>
+
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
+<script src="assets/shop.js"></script>
+</body>
+</html>
