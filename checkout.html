@@ -1,0 +1,61 @@
+function renderCheckoutPage(){
+  const checkoutEl = document.getElementById('checkoutCart');
+  const form = document.getElementById('checkoutForm');
+  if(!checkoutEl || !form) return;
+
+  const cart = loadCart();
+  const ids = Object.keys(cart);
+  if(ids.length===0){
+    checkoutEl.innerHTML = '<p>Your cart is empty.</p>';
+    document.getElementById('paypal-button-container').style.display = 'none';
+    form.style.display = 'none';
+    return;
+  }
+
+  let html = '<h2>Order Summary</h2><ul>';
+  let total = 0;
+  ids.forEach(id=>{
+    const p = products.find(x=>x.id===id);
+    const qty = cart[id];
+    if(!p) return;
+    html += `<li>${p.title} × ${qty} — £${(p.price*qty).toFixed(2)}</li>`;
+    total += p.price * qty;
+  });
+  html += `</ul><p><strong>Total: £${total.toFixed(2)}</strong></p>`;
+  checkoutEl.innerHTML = html;
+
+  // Handle form submit
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('customerName').value;
+    const email = document.getElementById('customerEmail').value;
+    const address = document.getElementById('customerAddress').value;
+    if(!name || !email || !address) return alert('Please fill in all fields');
+
+    // Render PayPal
+    paypal.Buttons({
+      createOrder: function(data, actions){
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: total.toFixed(2), currency_code: 'GBP' },
+            description: 'SunnahSmile Order'
+          }]
+        });
+      },
+      onApprove: function(data, actions){
+        return actions.order.capture().then(function(details){
+          alert(`Thank you, ${name}! Payment captured (sandbox).`);
+          localStorage.removeItem('sunnahsmile-cart-v1');
+          window.location.href = 'index.html';
+        });
+      },
+      onError: function(err){
+        console.error(err);
+        alert('PayPal error, check console.');
+      }
+    }).render('#paypal-button-container');
+
+    // Hide form to prevent double submission
+    form.style.display = 'none';
+  });
+}
