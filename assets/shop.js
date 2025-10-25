@@ -22,6 +22,13 @@ function updateCartCount(){ const cart = loadCart(); const count = Object.values
 
 function openCart(){ document.getElementById('cartPanel').classList.add('open'); renderCart(); }
 function closeCart(){ document.getElementById('cartPanel').classList.remove('open'); }
+// Add at the bottom of cart panel
+const checkoutBtn = document.createElement('button');
+checkoutBtn.textContent = 'Go to Checkout';
+checkoutBtn.style.marginTop = '0.5rem';
+checkoutBtn.onclick = () => { window.location.href = 'checkout.html'; };
+cartItemsEl.appendChild(checkoutBtn);
+
 
 function scrollToCart(){ openCart(); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
 
